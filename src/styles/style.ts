@@ -6,8 +6,8 @@ export const Title = styled.h1`
   color: #bf4f74;
 `;
 
-// Create a Wrapper component that'll render a <section> tag with some styles
 export const Wrapper = styled.section`
+  color: ${(props) => props.theme.colors.gray[100].value};
   padding: 4em;
   background: papayawhip;
 `;
