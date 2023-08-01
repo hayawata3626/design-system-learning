@@ -5,7 +5,7 @@ import { Title, Wrapper } from '@/styles/style';
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Title>タイトル</Title>
+      <Title>test title</Title>
       <Wrapper>test</Wrapper>
     </main>
   );

@@ -1,8 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 概要
 
-## Getting Started
+[Figma Tokens](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens))から生成したデザイントークン(`data/tokens.json`)をstyled-componentsのthemeに反映させたテンプレート。
 
-First, run the development server:
+
+## 起動
+
+ローカルサーバー起動
 
 ```bash
 npm run dev
@@ -12,23 +15,33 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## デザイントークン(json)からエイリアス参照している部分をなくす
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npx token-transformer data/tokens.json(生成元になるファイル) data/output.json(生成後のファイル)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 上記のoutput.jsonからtheme(型定義を含む)を生成
 
-## Learn More
+```
+npm run gen:theme
+```
 
-To learn more about Next.js, take a look at the following resources:
+## styleからthemeを参照している部分
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`src/styles/style.ts`
+```typescript
+import styled from 'styled-components';
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+export const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  border: 1px solid ${(props) => props.theme.colors.pink[300].value};
+`;
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+export const Wrapper = styled.section`
+  color: ${(props) => props.theme.colors.green[300].value};
+  padding: 4em;
+  background: ${(props) => props.theme.colors.gray[100].value};
+`;
+```

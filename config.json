@@ -1,20 +1,6 @@
 {
-  "source": ["output.json"],
+  "source": ["data/output.json"],
   "platforms": {
-    "scss": {
-      "buildPath": "src/tokens/",
-      "transformGroup": "scss",
-      "files": [
-        {
-          "destination": "tokens.scss",
-          "format": "scss/map-deep",
-          "mapName": "css-tokens",
-          "options": {
-            "outputReferences": true
-          }
-        }
-      ]
-    },
     "ts": {
       "buildPath": "src/tokens/",
       "transformGroup": "js",

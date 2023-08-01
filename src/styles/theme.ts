@@ -1,5 +1,5 @@
 import tokens from '../tokens/tokens';
-import styleTheme from '../tokens/tokens.js';
+import styleTheme from '../tokens/tokens';
 
 export type MyTheme = typeof tokens;
 
